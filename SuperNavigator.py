@@ -11,6 +11,6 @@ class SuperNavigateCommand(sublime_plugin.TextCommand):
                 region = regions[index]
                 self.view.sel().clear()
                 self.view.sel().add(region)
-                self.view.show(region)
+                self.view.show_at_center(region)
 
         self.view.window().show_quick_panel(items, on_done, sublime.MONOSPACE_FONT, -1, on_done)
