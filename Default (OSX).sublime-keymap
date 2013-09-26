@@ -1,0 +1,6 @@
+[
+    {
+        "keys": ["super+k", "super+a"],
+        "command": "super_navigate"
+    }
+]
