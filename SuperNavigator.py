@@ -1,10 +1,9 @@
 import sublime, sublime_plugin
-import re
 
 class SuperNavigateCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         regions = self.view.find_all('.+')
-        items = list(map(lambda _: self.view.substr(self.view.line(_)), regions))
+        items = [self.view.substr(self.view.line(_)) for _ in regions]
 
         def on_done(index):
             if index >= 0:
