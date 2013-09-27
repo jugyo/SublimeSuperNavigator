@@ -2,6 +2,8 @@ import sublime, sublime_plugin
 
 class SuperNavigateCommand(sublime_plugin.TextCommand):
     def run(self, edit):
+        org_sel = list(self.view.sel())
+
         if len(self.view.sel()) == 1 and self.view.sel()[0].size() > 0:
             pattern = self.view.substr(self.view.sel()[0])
             regions = self.view.find_all(".*%s.*" % pattern)
@@ -16,5 +18,9 @@ class SuperNavigateCommand(sublime_plugin.TextCommand):
                 self.view.sel().clear()
                 self.view.sel().add(region)
                 self.view.show_at_center(region)
+            else:
+                self.view.sel().clear()
+                self.view.sel().add_all(org_sel)
+                self.view.show(org_sel[0])
 
         self.view.window().show_quick_panel(items, on_done, sublime.MONOSPACE_FONT, -1, on_done)
