@@ -23,4 +23,7 @@ class SuperNavigateCommand(sublime_plugin.TextCommand):
                 self.view.sel().add_all(org_sel)
                 self.view.show(org_sel[0])
 
-        self.view.window().show_quick_panel(items, on_done, sublime.MONOSPACE_FONT, -1, on_done)
+        if int(sublime.version()) > 3000:
+            self.view.window().show_quick_panel(items, on_done, sublime.MONOSPACE_FONT, -1, on_done)
+        else:
+            self.view.window().show_quick_panel(items, on_done)
