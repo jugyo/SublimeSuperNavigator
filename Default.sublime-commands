@@ -2,5 +2,10 @@
     {
         "caption": "SuperNavigator: Super Navigate",
         "command": "super_navigate"
+    },
+    {
+        "caption": "SuperNavigator: Super Navigate in all tabs",
+        "command": "super_navigate",
+        "args": { "allTabs": true }
     }
 ]
