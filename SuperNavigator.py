@@ -22,8 +22,13 @@ class SuperNavigateCommand(sublime_plugin.TextCommand):
         for view in views:
             regions = view.find_all(pattern)
             if showFileName:
-                file_name = os.path.basename(view.file_name())
-                items += [["%s: %s" % (file_name, view.substr(view.line(_)))] for _ in regions]
+                if view.file_name():
+                    name = os.path.basename(view.file_name())
+                elif len(view.name()) > 0:
+                    name = view.name()
+                else:
+                    name = 'untitled'
+                items += [["%s: %s" % (name, view.substr(view.line(_)))] for _ in regions]
             else:
                 items += [view.substr(view.line(_)) for _ in regions]
             view_and_regions += [[view, _] for _ in regions]
