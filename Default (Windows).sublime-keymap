@@ -1,10 +1,10 @@
 [
     {
-        "keys": ["super+k", "super+a"],
+        "keys": ["ctrl+k", "ctrl+a"],
         "command": "super_navigate"
     },
     {
-        "keys": ["super+k", "super+s"],
+        "keys": ["ctrl+k", "ctrl+s"],
         "command": "super_navigate",
         "args": { "allTabs": true }
     }
